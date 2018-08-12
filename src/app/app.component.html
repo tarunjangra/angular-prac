@@ -9,7 +9,12 @@
       <app-server-element
       *ngFor="let serverElement of serverElements"
       [srvElement]="serverElement"
-      ></app-server-element>
+      >
+      <p>
+        <strong *ngIf="serverElement.type === 'server'" [ngStyle]="{'color': serverElement.type === 'server'?'red':'transparent'}">{{serverElement.content}}</strong>
+        <em *ngIf="serverElement.type === 'blueprint'" [ngStyle]="{'color': serverElement.type === 'blueprint'?'blue':'transparent'}">{{serverElement.content}}</em>
+      </p>
+    </app-server-element>
     </div>
   </div>
 </div>
