@@ -7,8 +7,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class CockpitComponent implements OnInit {
 
-  @Output() serverCreated: EventEmitter<any> = new EventEmitter<{serverName: string,serverContent: string}>();
-  @Output() blueprintCreated: EventEmitter<any> = new EventEmitter<{serverName: string,serverContent: string}>();
+  @Output('srvCreated') serverCreated: EventEmitter<any> = new EventEmitter<{serverName: string,serverContent: string}>();
+  @Output('blueCreated') blueprintCreated: EventEmitter<any> = new EventEmitter<{serverName: string,serverContent: string}>();
   public newServerName = '';
   public newServerContent = '';
   constructor() { }
