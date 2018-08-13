@@ -25,8 +25,8 @@
   <app-game-control (start)="onStart($event)"></app-game-control>
   
   <p *ngFor="let event_number of event_numbers">
-    <app-odd *ngIf="event_number.type==='odd'">{{event_number.value}}</app-odd>
-    <app-even *ngIf="event_number.type==='even'">{{event_number.value}}</app-even>
+    <app-odd *ngIf="event_number.type==='odd'" [number]="event_number.value"></app-odd>
+    <app-even *ngIf="event_number.type==='even'" [number]="event_number.value" ></app-even>
   </p>
 </div>
 
