@@ -29,4 +29,7 @@ export class AppComponent {
   onChangeName(){
     this.serverElements[0].name = 'Changed Value';
   }
+  onDestroy(){
+    this.serverElements.splice(0,1);
+  }
 }

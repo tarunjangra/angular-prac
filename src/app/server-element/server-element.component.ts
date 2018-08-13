@@ -3,7 +3,13 @@ import {
   OnInit, 
   Input, 
   OnChanges,
-  SimpleChanges
+  SimpleChanges,
+  DoCheck,
+  AfterContentInit,
+  AfterContentChecked,
+  AfterViewInit,
+  AfterViewChecked,
+  OnDestroy
  } from '@angular/core';
 
 @Component({
@@ -11,7 +17,7 @@ import {
   templateUrl: './server-element.component.html',
   styleUrls: ['./server-element.component.css']
 })
-export class ServerElementComponent implements OnInit, OnChanges {
+export class ServerElementComponent implements OnInit, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
 
   @Input('srvElement') element: {name: string,type: string, content: string};
   @Input() name: string;
@@ -21,14 +27,52 @@ export class ServerElementComponent implements OnInit, OnChanges {
 
    }
 
-  ngOnInit() {
-    console.log('ngOnInit call on server element.');
-  }
+   ngOnInit(): void {
+     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+     //Add 'implements OnInit' to the class.
+     console.log('ngOnInit call on server element.');
+   }
 
   ngOnChanges(changes: SimpleChanges): void {
     //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
     //Add '${implements OnChanges}' to the class.
     console.log(changes);
   }
+
+  ngDoCheck() {
+    //Called every time that the input properties of a component or a directive are checked. Use it to extend change detection by performing a custom check.
+    //Add 'implements DoCheck' to the class.
+    console.log('ngDoCheck hook called here!');
+  }
+
+  ngAfterContentInit() {
+    //Called after ngOnInit when the component's or directive's content has been initialized.
+    //Add 'implements AfterContentInit' to the class.
+    console.log('ngAfterContentInit has been called!');
+  }
+
+  ngAfterContentChecked() {
+    //Called after every check of the component's or directive's content.
+    //Add 'implements AfterContentChecked' to the class.
+    console.log('ngAfterContentChecked hook called');
+  }
+
+  ngAfterViewInit() {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
+    console.log('ngAfterViewInit has been called!');
+  }
+
+  ngAfterViewChecked(){
+    console.log('ngAfterViewChecked hook called');
+  }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    console.log('ngDestroy hook called');
+  }
+
+
 
 }
