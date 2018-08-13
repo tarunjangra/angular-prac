@@ -14,6 +14,7 @@ import {
 export class ServerElementComponent implements OnInit, OnChanges {
 
   @Input('srvElement') element: {name: string,type: string, content: string};
+  @Input() name: string;
   constructor() {
 
     console.log('Constructor of server elements');

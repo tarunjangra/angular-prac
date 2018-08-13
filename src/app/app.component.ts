@@ -7,9 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
  serverElements = [
-   {type: 'server',name: 'Test server', content: 'Test content'},
-   {type: 'blueprint',name: 'Test server', content: 'Test content'},
-   {type: 'server',name: 'Test server', content: 'Test content'},
+   {type: 'server',name: 'Test server', content: 'Test content'}
   ];
 
   onServerAdded(serverData: {serverName: string,serverContent: string}){
@@ -26,5 +24,9 @@ export class AppComponent {
       name: blueprintData.serverName,
       content: blueprintData.serverContent
     });
+  }
+
+  onChangeName(){
+    this.serverElements[0].name = 'Changed Value';
   }
 }

@@ -4,11 +4,13 @@
   (blueCreated)="onBlueprintAdded($event)"
   ></app-cockpit>
   <hr>
+  <button class="btn btn-primary" (click)="onChangeName()">Change me</button>
   <div class="row">
     <div class="col-xs-12">
       <app-server-element
       *ngFor="let serverElement of serverElements"
       [srvElement]="serverElement"
+      [name]="serverElement.name"
       >
       <p>
         <strong *ngIf="serverElement.type === 'server'" [ngStyle]="{'color': serverElement.type === 'server'?'red':'transparent'}">{{serverElement.content}}</strong>
