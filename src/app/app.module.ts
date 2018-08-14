@@ -8,6 +8,7 @@ import { ServerElementComponent } from './server-element/server-element.componen
 import { GameControlComponent } from './prac/game-control/game-control.component';
 import { OddComponent } from './prac/odd/odd.component';
 import { EvenComponent } from './prac/even/even.component';
+import { BasicHighlighterDirective } from './directives/basic-highlighter.directive';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { EvenComponent } from './prac/even/even.component';
     ServerElementComponent,
     GameControlComponent,
     OddComponent,
-    EvenComponent
+    EvenComponent,
+    BasicHighlighterDirective
   ],
   imports: [
     BrowserModule,
