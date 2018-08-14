@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
-import { LoggingService } from '../services/logging.services';
 import { AccountsService } from '../services/accounts.service';
 
 @Component({
@@ -13,7 +12,6 @@ export class AccountComponent implements OnInit {
   accounts: {name: string, status: string}[] = [];
 
   constructor(
-    private loggingService: LoggingService,
     private accountService: AccountsService
   ){}
   ngOnInit(){
@@ -21,6 +19,5 @@ export class AccountComponent implements OnInit {
   }
   onSetTo(status: string) {
     this.accountService.updateStatus(this.id,status);
-    this.loggingService.logStatusChanged(status);
   }
 }

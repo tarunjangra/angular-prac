@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { LoggingService } from '../services/logging.services';
 import { AccountsService } from '../services/accounts.service';
 
 @Component({
@@ -9,11 +8,9 @@ import { AccountsService } from '../services/accounts.service';
 })
 export class NewAccountComponent {
   constructor(
-    private loggingService: LoggingService,
     private accountService: AccountsService
   ){}
   onCreateAccount(accountName: string, accountStatus: string) {
     this.accountService.onAccountAdded({name: accountName, status: accountStatus});
-    this.loggingService.logStatusChanged(status);
   }
 }
