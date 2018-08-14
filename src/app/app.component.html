@@ -1,47 +1,53 @@
 <div class="container">
-  <app-cockpit
-  (srvCreated)="onServerAdded($event)"
-  (blueCreated)="onBlueprintAdded($event)"
-  ></app-cockpit>
+    <h3>New Application for service log</h3>
+    <div class="row">
+      <div class="col-xs-12">
+          <app-new-account (accountAdded)="onAccountAdded($event)"></app-new-account>
+          <hr>
+          <app-account
+            *ngFor="let acc of accounts; let i = index"
+            [account]="acc"
+            [id]="i"
+            (statusChanged)="onStatusChanged($event)"></app-account>  
+      </div>
+    </div>
+    <hr>
+    <h3>New Application for Game Controller to work with even odd numbers</h3>
+  <div class="row">
+    <div class="col-xs-12">
+        <app-game-control (start)="onStart($event)"></app-game-control>
+        <p *ngFor="let event_number of event_numbers">
+          <app-odd *ngIf="event_number.type==='odd'" [number]="event_number.value"></app-odd>
+          <app-even *ngIf="event_number.type==='even'" [number]="event_number.value" ></app-even>
+        </p>
+    </div>
+  </div>
+   
   <hr>
+  <h3>First app of angular.</h3>
   <div class="row">
     <div class="col-xs-12">
-
-  <button class="btn btn-primary" (click)="onChangeName()">Change me</button>
-
-  <button class="btn btn-danger" (click)="onDestroy()">Destroy me</button>
-      <app-server-element
-      *ngFor="let serverElement of serverElements"
-      [srvElement]="serverElement"
-      [name]="serverElement.name"
-      >
-      <p #contentParagraph>
-        <strong *ngIf="serverElement.type === 'server'" [ngStyle]="{'color': serverElement.type === 'server'?'red':'transparent'}">{{serverElement.content}}</strong>
-        <em *ngIf="serverElement.type === 'blueprint'" [ngStyle]="{'color': serverElement.type === 'blueprint'?'blue':'transparent'}">{{serverElement.content}}</em>
-      </p>
-    </app-server-element>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-12">
-        <app-new-account (accountAdded)="onAccountAdded($event)"></app-new-account>
+        <app-cockpit
+        (srvCreated)="onServerAdded($event)"
+        (blueCreated)="onBlueprintAdded($event)"
+        ></app-cockpit>
         <hr>
-        <app-account
-          *ngFor="let acc of accounts; let i = index"
-          [account]="acc"
-          [id]="i"
-          (statusChanged)="onStatusChanged($event)"></app-account>  
+      
+        <button class="btn btn-primary" (click)="onChangeName()">Change me</button>
+      
+        <button class="btn btn-danger" (click)="onDestroy()">Destroy me</button>
+            <app-server-element
+            *ngFor="let serverElement of serverElements"
+            [srvElement]="serverElement"
+            [name]="serverElement.name"
+            >
+            <p #contentParagraph>
+              <strong *ngIf="serverElement.type === 'server'" [ngStyle]="{'color': serverElement.type === 'server'?'red':'transparent'}">{{serverElement.content}}</strong>
+              <em *ngIf="serverElement.type === 'blueprint'" [ngStyle]="{'color': serverElement.type === 'blueprint'?'blue':'transparent'}">{{serverElement.content}}</em>
+            </p>
+          </app-server-element>
     </div>
   </div>
 
-
-
-  <app-game-control (start)="onStart($event)"></app-game-control>
-  
-  <p *ngFor="let event_number of event_numbers">
-    <app-odd *ngIf="event_number.type==='odd'" [number]="event_number.value"></app-odd>
-    <app-even *ngIf="event_number.type==='even'" [number]="event_number.value" ></app-even>
-  </p>
 </div>
 
