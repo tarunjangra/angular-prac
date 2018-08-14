@@ -15,6 +15,22 @@ export class AppComponent {
   even_number: number=0;
   odd_number: number=0;
 
+
+  accounts = [
+    {
+      name: 'Master Account',
+      status: 'active'
+    },
+    {
+      name: 'Testaccount',
+      status: 'inactive'
+    },
+    {
+      name: 'Hidden Account',
+      status: 'unknown'
+    }
+  ];
+
   onServerAdded(serverData: {serverName: string,serverContent: string}){
     this.serverElements.push({
       type: 'server',
@@ -45,4 +61,15 @@ export class AppComponent {
       this.event_numbers.push({type: 'odd', value: eventVal});
     }
   }
+
+
+
+  onAccountAdded(newAccount: {name: string, status: string}) {
+    this.accounts.push(newAccount);
+  }
+
+  onStatusChanged(updateInfo: {id: number, newStatus: string}) {
+    this.accounts[updateInfo.id].status = updateInfo.newStatus;
+  }
+
 }

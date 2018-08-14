@@ -9,6 +9,8 @@ import { GameControlComponent } from './prac/game-control/game-control.component
 import { OddComponent } from './prac/odd/odd.component';
 import { EvenComponent } from './prac/even/even.component';
 import { BasicHighlighterDirective } from './directives/basic-highlighter.directive';
+import { AccountComponent } from './account/account.component';
+import { NewAccountComponent } from './new-account/new-account.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { BasicHighlighterDirective } from './directives/basic-highlighter.direct
     GameControlComponent,
     OddComponent,
     EvenComponent,
-    BasicHighlighterDirective
+    BasicHighlighterDirective,
+    AccountComponent,
+    NewAccountComponent
   ],
   imports: [
     BrowserModule,
