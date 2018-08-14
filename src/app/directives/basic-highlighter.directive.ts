@@ -23,6 +23,7 @@ export class BasicHighlighterDirective implements OnInit {
         private renderer: Renderer2
     ){}
     ngOnInit(){
+       this.backgroundColor = this.defaultColor; 
     }
 
     @HostListener('mouseenter') mouseover(){
