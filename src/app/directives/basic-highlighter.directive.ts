@@ -1,4 +1,4 @@
-import { Directive, OnInit, ElementRef, Renderer2 } from "../../../node_modules/@angular/core";
+import { Directive, OnInit, ElementRef, Renderer2, HostListener } from "../../../node_modules/@angular/core";
 
 @Directive(
     {
@@ -12,7 +12,17 @@ export class BasicHighlighterDirective implements OnInit {
         private renderer: Renderer2
     ){}
     ngOnInit(){
-        console.log('directive: '+ this.eleRef);
-        this.renderer.setStyle(this.eleRef.nativeElement,'background-color','red');
+    }
+
+    @HostListener('mouseenter') mouseover(eventData: Event){
+        this.renderer.setStyle(this.eleRef.nativeElement,'background-color','green');
+        this.renderer.setStyle(this.eleRef.nativeElement,'color','white');
+        this.renderer.setStyle(this.eleRef.nativeElement,'font-style','bold');
+    }
+
+    @HostListener('mouseleave') mouseLeave(eventData: Event){
+        this.renderer.setStyle(this.eleRef.nativeElement,'background-color','grey');
+        this.renderer.setStyle(this.eleRef.nativeElement,'color','black');
+        this.renderer.setStyle(this.eleRef.nativeElement,'font-style','normal');
     }
 }
