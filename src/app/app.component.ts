@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountsService } from './services/accounts.service';
+import { UserService } from './services/users.service';
 
 @Component({
   selector: 'app-root',
@@ -16,13 +17,19 @@ export class AppComponent implements OnInit {
   even_number: number=0;
   odd_number: number=0;
   accounts: {name: string, status: string}[] = [];
+  inactive_users: {name: string}[] = [];
+  active_users: {name: string}[] = [];
+  
 
   constructor(
-    private accountServ: AccountsService
+    private accountServ: AccountsService,
+    private userServ: UserService
   ){}
 
  ngOnInit(){
    this.accounts = this.accountServ.accounts;
+   this.inactive_users = this.userServ.inactive;
+   this.active_users = this.userServ.active;
  }
 
   onServerAdded(serverData: {serverName: string,serverContent: string}){
@@ -58,5 +65,13 @@ export class AppComponent implements OnInit {
 
   onStatusChanged(indx: number,acnt: {name: string, status: string}){
     this.accounts[indx] = acnt;
+  }
+
+  setUser(indx: number, status: string){
+    if(status === 'inactive'){
+      this.userServ.makeInactive(indx);
+    }else if(status === 'active'){
+      this.userServ.makeActive(indx);
+    }
   }
 }
