@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
   accounts: {name: string, status: string}[] = [];
   inactive_users: {name: string}[] = [];
   active_users: {name: string}[] = [];
+  operationCount: number = 0;
   
 
   constructor(
@@ -67,11 +68,13 @@ export class AppComponent implements OnInit {
     this.accounts[indx] = acnt;
   }
 
-  setUser(indx: number, status: string){
+  setUser(indx: number, status: string) {
     if(status === 'inactive'){
       this.userServ.makeInactive(indx);
     }else if(status === 'active'){
       this.userServ.makeActive(indx);
     }
+
+   this.operationCount = this.userServ.operationCount;
   }
 }
