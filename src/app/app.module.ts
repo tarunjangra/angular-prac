@@ -11,6 +11,8 @@ import { EvenComponent } from './prac/even/even.component';
 import { BasicHighlighterDirective } from './directives/basic-highlighter.directive';
 import { AccountComponent } from './account/account.component';
 import { NewAccountComponent } from './new-account/new-account.component';
+import { AccountsService } from './services/accounts.service';
+import { LoggingService } from './services/logging.services';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,7 @@ import { NewAccountComponent } from './new-account/new-account.component';
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AccountsService,LoggingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
