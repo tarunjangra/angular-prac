@@ -16,7 +16,7 @@ import {
 
 export class BasicHighlighterDirective implements OnInit {
     @Input() defaultColor: string = 'transparent';
-    @Input() highlightColor: string = 'green';
+    @Input('appBasicHighlighter') highlightColor: string = 'green';
     @HostBinding('style.backgroundColor') backgroundColor: string = this.defaultColor;
     constructor(
         private eleRef: ElementRef,
